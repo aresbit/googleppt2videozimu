@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Google Vids Subtitle Translator",
+  "version": "0.2.5",
+  "description": "Translate English subtitles in Google Vids scenes into Chinese and render them inline.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://docs.google.com/videos/*",
+    "https://translate.googleapis.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://docs.google.com/videos/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Google Vids Subtitle Translator"
+  }
+}
